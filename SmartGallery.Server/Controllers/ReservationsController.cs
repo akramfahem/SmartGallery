@@ -58,12 +58,12 @@ public class ReservationsController : ControllerBase
         await _service.UpdateReservationAsync(id, model);
         return NoContent();
     }
-    [HttpDelete("reservations")]
-    public async Task<IActionResult> DeleteReservation([FromQuery] int Id)
+    [HttpDelete("reservations/{id:int}")]
+    public async Task<IActionResult> DeleteReservation(int id)
     {
-        if(Id is not default(int))
+        if(id is not default(int) )
         {
-           await _service.DeleteReservationAsync(Id);
+           await _service.DeleteReservationAsync(id);
            return NoContent();
         }
         return BadRequest("Delete isn't Completed Successfully");
