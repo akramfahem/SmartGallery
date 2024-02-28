@@ -26,9 +26,19 @@ public partial class AdminServicesPage
         serviceViewModels = (await servicesService.GetServices()).ToList();
         await InvokeAsync(StateHasChanged);
     }
-    public async Task AddService()
+    public async Task UpdateService(int id)
     {
-
+        navigationManager.NavigateTo($"/AddService/{id}");
+        await InvokeAsync(StateHasChanged);
+    }
+    public void AddService()
+    {
+        navigationManager.NavigateTo($"/AddService");
+    }
+    public async Task NavigatoToItems(int id)
+    {
+        navigationManager.NavigateTo($"/admin/services/{id}");
+        await InvokeAsync(StateHasChanged);
     }
 }
 

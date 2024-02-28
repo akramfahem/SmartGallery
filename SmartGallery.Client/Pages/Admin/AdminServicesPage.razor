@@ -28,8 +28,14 @@
                 <MudButton Class="me-3" OnClick="() => NavigateToReservation(serviceViewModel.Id)" Variant="Variant.Filled" Color="Color.Info">
                     Reservations
                 </MudButton>
-                <MudButton OnClick="()=> DeleteService(serviceViewModel.Id)" Variant="Variant.Filled" Color="Color.Error">
+                <MudButton Class="me-3" OnClick="() => UpdateService(serviceViewModel.Id)" Variant="Variant.Filled" Color="Color.Warning">
+                    Edit
+                </MudButton>
+                <MudButton Class="me-3" OnClick="()=> DeleteService(serviceViewModel.Id)" Variant="Variant.Filled" Color="Color.Error">
                     Delete
+                </MudButton>
+                <MudButton OnClick="()=> NavigatoToItems(serviceViewModel.Id)" Variant="Variant.Filled" Color="Color.Dark">
+                    Items
                 </MudButton>
             </MudCardActions>
         </MudCard>
