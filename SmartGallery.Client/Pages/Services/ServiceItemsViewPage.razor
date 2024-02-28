@@ -1,0 +1,26 @@
+﻿@page "/admin/services/{ServiceId:int}"
+@layout MudMainLayout
+<MudCardActions>
+    <MudButton OnClick="AddServiceItem" Variant="Variant.Filled" Color="Color.Success">
+        Add Service
+    </MudButton>
+</MudCardActions>
+<MudCard>
+@foreach (ItemViewModel itemViewModel in itemsViewModel)
+{
+    <MudCard Class="mb-5">
+        
+        <MudCardContent>
+            <MudText Typo="Typo.h2">
+                @itemViewModel.Name
+            </MudText>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton OnClick="()=> DeleteService(itemViewModel.Id)" Variant="Variant.Filled" Color="Color.Error">
+                Delete
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+}
+</MudCard>
+
