@@ -10,6 +10,6 @@ public record ReservationServiceDetailsVM(
         TimeOnly ReservationTime,
         int serviceId,
         string serviceName,
-        int ItemId,
+        int? ItemId,
         string itemName
     );

@@ -13,8 +13,8 @@ public class Reservation : BaseEntity
     public StatusEnum Status { get; set; } = StatusEnum.Pending;
     public TimeOnly ReservationTime { get; set; }
     public DateOnly ReservationDate { get; set; }
-    public int ItemId { get; set; }
-    public Item Item { get; set; } = null!;
+    public int? ItemId { get; set; }
+    public Item? Item { get; set; } = null!;
     public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     public ReservationViewModel ToViewModel()

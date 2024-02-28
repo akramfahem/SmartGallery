@@ -10,6 +10,6 @@ public record ReservationCustomerDetailsVM(
         string customerEmail,
         string Address,
         string PhoneNumber,
-        int ItemId,
+        int? ItemId,
         string ItemName
     );

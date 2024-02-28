@@ -43,6 +43,7 @@ public class ReservationService : IReservationService
         );
         return reservationsViewModel;
     }
+
     public async Task<ReservationDetailsVM> GetReservationByIdAsync(int id)
     {
         var reservation = await GetReservationAndCheckIfItExistAsync(
@@ -67,6 +68,7 @@ public class ReservationService : IReservationService
 
         return reservation;
     }
+
     public async Task<IEnumerable<ReservationDetailsVM>> GetReservationAsync(int serviceId, string customerId)
     {
         var reservation = await _repository.Reservation.FindReservationsAsync(

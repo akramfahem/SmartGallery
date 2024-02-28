@@ -8,11 +8,11 @@ public record ReservationViewModel(
         StatusEnum Status,
         DateOnly ReservationDate,
         TimeOnly ReservationTime,
-        int ItemId
+        int? ItemId
     );
 public record ReservationDetailsVM
 {
-    public ReservationDetailsVM(int id, string problemDescription, StatusEnum status, DateOnly reservationDate, TimeOnly reservationTime, string customerId, string customerEmail, int serviceId, string serviceName, int itemId, string itemName)
+    public ReservationDetailsVM(int id, string problemDescription, StatusEnum status, DateOnly reservationDate, TimeOnly reservationTime, string customerId, string customerEmail, int serviceId, string serviceName, int? itemId, string itemName)
     {
         Id = id;
         ProblemDescription = problemDescription;
@@ -26,6 +26,10 @@ public record ReservationDetailsVM
         ItemId = itemId;
         this.itemName = itemName;
     }
+    public ReservationDetailsVM()
+    {
+
+    }
 
     public int Id {get ;set;}
     public string ProblemDescription {get ;set;}
@@ -36,6 +40,6 @@ public record ReservationDetailsVM
     public string customerEmail {get ;set;}
     public int serviceId {get ;set;}
     public string serviceName {get ;set;}
-    public int ItemId {get ;set;}
+    public int? ItemId {get ;set;}
     public string itemName {get ;set;}
 }
