@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SmartGallery.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class initail : Migration
+    public partial class InitDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -206,7 +206,7 @@ namespace SmartGallery.Server.Migrations
                     Status = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
                     ReservationTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     ReservationDate = table.Column<DateTime>(type: "date", nullable: false),
-                    ItemId = table.Column<int>(type: "int", nullable: false)
+                    ItemId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -263,14 +263,14 @@ namespace SmartGallery.Server.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1", "feae6691-bd74-4de8-9520-b5f900f81d76", "Admin", "ADMIN" },
-                    { "e64f6a36-f4a3-44d5-a2f8-b788621f3d3e", "12c30f2a-3b83-4802-a2b6-1dd847e00ad0", "User", "USER" }
+                    { "1", "729a813e-948c-4b63-b90b-e4c4f8fdd927", "Admin", "ADMIN" },
+                    { "502969b9-84d9-409f-829e-4e4ee8fe5632", "f7b22742-bf1b-494d-8946-241db90837a9", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, null, "3d14e1b0-1546-4df3-a185-7803959ac76e", "admin@gmail.com", true, false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEGgS17qKRt5AYSbKFML3l3pUiqxDefomLu3qItRXgEX9ixS8hKYds3MmkAb5gE+QrA==", "01018004723", true, "8d6333b8-cbc5-4fef-820f-276600df9019", false, "admin@gmail.com" });
+                values: new object[] { "1", 0, null, "bd0d3393-2b58-456b-9c19-c23add916953", "admin@gmail.com", true, false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAELKIL4UN9SmVhK18SilqA4mAgEfed6E+Jvzdqz2S/VLkWr/5MNbumEKCyygE8uODSw==", "01018004723", true, "0bd91391-580d-4721-88aa-f6a21c7bbaf8", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

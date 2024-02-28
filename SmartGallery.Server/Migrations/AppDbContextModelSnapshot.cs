@@ -51,15 +51,15 @@ namespace SmartGallery.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e64f6a36-f4a3-44d5-a2f8-b788621f3d3e",
-                            ConcurrencyStamp = "12c30f2a-3b83-4802-a2b6-1dd847e00ad0",
+                            Id = "502969b9-84d9-409f-829e-4e4ee8fe5632",
+                            ConcurrencyStamp = "f7b22742-bf1b-494d-8946-241db90837a9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "feae6691-bd74-4de8-9520-b5f900f81d76",
+                            ConcurrencyStamp = "729a813e-948c-4b63-b90b-e4c4f8fdd927",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -250,16 +250,16 @@ namespace SmartGallery.Server.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d14e1b0-1546-4df3-a185-7803959ac76e",
+                            ConcurrencyStamp = "bd0d3393-2b58-456b-9c19-c23add916953",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGgS17qKRt5AYSbKFML3l3pUiqxDefomLu3qItRXgEX9ixS8hKYds3MmkAb5gE+QrA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELKIL4UN9SmVhK18SilqA4mAgEfed6E+Jvzdqz2S/VLkWr/5MNbumEKCyygE8uODSw==",
                             PhoneNumber = "01018004723",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "8d6333b8-cbc5-4fef-820f-276600df9019",
+                            SecurityStamp = "0bd91391-580d-4721-88aa-f6a21c7bbaf8",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -299,7 +299,7 @@ namespace SmartGallery.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ItemId")
+                    b.Property<int?>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProblemDescription")
