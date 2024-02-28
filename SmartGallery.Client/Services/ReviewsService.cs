@@ -17,15 +17,11 @@ namespace SmartGallery.Client.Services
             _httpClient = httpClient;
         }
 
-        public async Task CreateReview(ReviewForCreationVM reviewForCreationViewModel)
+        public async Task CreateReview(int reservationId,string customerId,ReviewForCreationVM reviewForCreationViewModel)
         {
-            await _httpClient.PostAsJsonAsync("api/Reviews", reviewForCreationViewModel);
+            await _httpClient.PostAsJsonAsync($"api/Reviews?reservationId={reservationId}&customerId={customerId}", reviewForCreationViewModel);
         }
 
-        public async Task DeleteReview(int id)
-        {
-            await _httpClient.DeleteAsync($"api/Reviews/{id}");
-        }
 
         public async Task<IEnumerable<ReviewDetailsVM>?> GetReviewsAsync()
         {
