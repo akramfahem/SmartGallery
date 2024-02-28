@@ -244,107 +244,7 @@
     </div>
 </section>
 <section class="gallary" id="gallary">
-    <h1 class="heading">
-        <span>g</span>
-        <span>a</span>
-        <span>l</span>
-        <span>l</span>
-        <span>a</span>
-        <span>r</span>
-        <span>y</span>
-    </h1>
-    <div class="container">
-        <div class="box">
-            <img src="./images/g-1.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-2.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-3.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-4.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-5.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-6.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-7.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-8.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="./images/g-9.jpg" alt="" />
-            <div class="content">
-                <h3>Name something</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam!
-                </p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-    </div>
+    <div class="container"></div>
 </section>
 <section class="review" id="review">
     <h1 class="heading">
@@ -357,104 +257,27 @@
     </h1>
     <div class="swiper review-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-7.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            @foreach (ReviewDetailsVM reviewDetailsVM in Reviews)
+             {
+                <div class="swiper-slide">
+                    <div class="box">
+                        <h3>@reviewDetailsVM.CustomerEmail.Split("@").FirstOrDefault()</h3>
+                        <p>
+                            @reviewDetailsVM.Comment
+                        </p>
+                        <div class="stars">
+                            @for (int i = 0; i < reviewDetailsVM.Rating; i++)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            @for (int i = 5 - reviewDetailsVM.Rating; i > 0; i--)
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-1.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-2.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-3.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-4.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-5.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="./images/gg-6.jpg" alt="" />
-                    <h3>jack moe:</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Praesentium quas odio minus repellat vel quae accusantium ea quo
-                        dolores vero?
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
+              }
         </div>
     </div>
 </section>
