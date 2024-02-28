@@ -22,13 +22,20 @@
             <h3>Reservation</h3>
             <AuthorizeView Roles="Admin" Context="ChildContext">
                 <label>Status: </label>
-                <select class="form-select" value="@statusEnum">
+                <select class="form-select form-select-lg mb-3" value="@statusEnum">
                     @foreach (var Type in Enum.GetValues(typeof(StatusEnum)))
                     {
                         <option value="@Type">@Type</option>
                     }
                 </select>
             </AuthorizeView>
+            <label>Items: </label>
+            <InputSelect class="form-select form-select-lg mb-3" @bind-Value="SelectedItem.Id">
+                @foreach (ItemViewModel itemViewModel in itemViewModels)
+                {
+                    <option value="@itemViewModel.Id">@itemViewModel.Name</option>
+                }
+            </InputSelect>
             <div class="form-group">
                 <label>Problem Description</label>
                 <InputTextArea class="box" @bind-Value="@viewModel.ProblemDescription" placeholder="Enter your Problem Description" />

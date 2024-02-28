@@ -1,9 +1,11 @@
-﻿using System.Security.Claims;
+﻿using System.Data;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using SmartGallery.Client.Services;
 using SmartGallery.Client.Services.Contracts;
 using SmartGallery.Shared;
+using SmartGallery.Shared.ViewModels.ItemViewModels;
 using SmartGallery.Shared.ViewModels.ReservationViewModels;
 
 namespace SmartGallery.Client.Pages.Reservations;
@@ -19,8 +21,11 @@ public partial class ReservationsPage
     bool isSuccess { get; set; }
     bool isFailed { get; set; }
     public ReservationDetailsVM viewModel { get; set; } = new();
+    List<ItemViewModel> itemViewModels { get; set; } = new();
+    ItemViewModel SelectedItem { get; set; } = new();
     [Inject] IReservationsService _reservationsService { get; set; }
     [Inject] ILoginService _loginService { get; set; }
+    [Inject] IServiceItemsService _serviceItemsService { get; set; }
     [Inject] NavigationManager _navigationManager { get; set; }
     [Inject] AuthenticationStateProvider _authenticationStateProvider { get; set;}
     public string MessageToShow { get; set; } = " ";
@@ -30,6 +35,11 @@ public partial class ReservationsPage
         {
             viewModel = await _reservationsService.GetReservationByIdAsync(Id);
         }
+        viewModel.ReservationDate =DateOnly.FromDateTime(DateTime.Now);
+        viewModel.ReservationTime = TimeOnly.FromDateTime(DateTime.Now);
+
+        itemViewModels = (await _serviceItemsService.GetItemsForServiceAsync(serviceId)).ToList();
+        await InvokeAsync(StateHasChanged);
         await base.OnInitializedAsync();
     }
     public async Task HandleValidSubmitAsync()
@@ -41,7 +51,8 @@ public partial class ReservationsPage
                 ProblemDescription = viewModel.ProblemDescription,
                 ReservationDate = viewModel.ReservationDate,
                 ReservationTime = viewModel.ReservationTime,
-                Status = statusEnum
+                Status = statusEnum,
+                ItemId = SelectedItem.Id,
             });
             _navigationManager.NavigateTo("/Profile");
 
@@ -57,6 +68,7 @@ public partial class ReservationsPage
                 ProblemDescription = viewModel.ProblemDescription,
                 ReservationDate = viewModel.ReservationDate,
                 ReservationTime = viewModel.ReservationTime,
+                ItemId = SelectedItem.Id
             });
             if (response is not null)
             {
