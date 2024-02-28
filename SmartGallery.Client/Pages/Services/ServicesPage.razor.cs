@@ -45,11 +45,10 @@ public partial class ServicesPage
         }
         else
         {
-            ServiceViewModel? serviceViewModel = await _servicesService.GetServiceById(serviceId);
             ServiceForUpdateViewModel serviceForUpdateViewModel = new();
-            serviceForUpdateViewModel.Icon = serviceViewModel.Icon;
-            serviceForUpdateViewModel.Description = serviceViewModel.Description;
-            serviceForUpdateViewModel.Name = serviceViewModel.Name;
+            serviceForUpdateViewModel.Icon = viewModel.Icon;
+            serviceForUpdateViewModel.Description = viewModel.Description;
+            serviceForUpdateViewModel.Name = viewModel.Name;
 
             await _servicesService.UpdateService(serviceId, serviceForUpdateViewModel);
             MessageToShow = "Service Updated Successfully";
