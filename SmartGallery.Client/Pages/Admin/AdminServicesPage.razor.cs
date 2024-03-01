@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using SmartGallery.Client.Services.Contracts;
 using SmartGallery.Shared.ViewModels.ServiceViewModels;
 
 namespace SmartGallery.Client.Pages.Admin;
 
+[Authorize(Roles = "Admin")]
 public partial class AdminServicesPage
 {
     public List<ServiceViewModel> serviceViewModels { get; set; } = new();

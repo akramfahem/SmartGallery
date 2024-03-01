@@ -37,39 +37,40 @@ public partial class ReservationsPage
         }
         viewModel.ReservationDate =DateOnly.FromDateTime(DateTime.Now);
         viewModel.ReservationTime = TimeOnly.FromDateTime(DateTime.Now);
-
+            
         itemViewModels = (await _serviceItemsService.GetItemsForServiceAsync(serviceId)).ToList();
         await InvokeAsync(StateHasChanged);
         await base.OnInitializedAsync();
     }
     public async Task HandleValidSubmitAsync()
     {
+        ReservationForUpdateViewModel reservationForUpdateViewModel = new()
+        {
+            ProblemDescription = viewModel.ProblemDescription,
+            ReservationDate = viewModel.ReservationDate,
+            ReservationTime = viewModel.ReservationTime,
+            Status = statusEnum,
+            ItemId = SelectedItem.Id == 0 ? null : SelectedItem.Id
+        };
         if (Id is not default(int))
         {
-            await _reservationsService.UpdateReservationAsync(Id, new()
-            {
-                ProblemDescription = viewModel.ProblemDescription,
-                ReservationDate = viewModel.ReservationDate,
-                ReservationTime = viewModel.ReservationTime,
-                Status = statusEnum,
-                ItemId = SelectedItem.Id,
-            });
-            _navigationManager.NavigateTo("/Profile");
-
+        await _reservationsService.UpdateReservationAsync(Id, reservationForUpdateViewModel
+        );
+        _navigationManager.NavigateTo("/Profile");
         }
         else
         {
             var authenticationState = await _authenticationStateProvider.GetAuthenticationStateAsync();
             var user = authenticationState.User;
             string userId = user.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
-
-            var response = await _reservationsService.CreateReservation(serviceId, userId, new()
+            ReservationForCreationViewModel reservationForCreationViewModel = new()
             {
                 ProblemDescription = viewModel.ProblemDescription,
                 ReservationDate = viewModel.ReservationDate,
                 ReservationTime = viewModel.ReservationTime,
-                ItemId = SelectedItem.Id
-            });
+                ItemId = SelectedItem.Id == 0 ? null : SelectedItem.Id
+            };
+            var response = await _reservationsService.CreateReservation(serviceId,userId,reservationForCreationViewModel);
             if (response is not null)
             {
                 isSuccess = true;

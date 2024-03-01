@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using SmartGallery.Client.Services.Contracts;
 
 namespace SmartGallery.Client.Pages.Admin;
 
+[Authorize(Roles = "Admin")]
 public partial class AdminServiceItemsPage
 {
 
