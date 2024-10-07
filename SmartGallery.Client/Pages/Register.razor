@@ -1,0 +1,50 @@
+﻿@page "/Register"
+@using Blazored.FluentValidation
+<head>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<header class="header position-relative">
+    <div class="icon">
+        <i @onclick="NavigateToHome" class="fas fa-arrow-left" aria-hidden="true"></i>
+    </div>
+    <a class="logo"><span>L</span>ife <span>C</span>hanger</a>
+    <div class="icon">
+        <AuthorizeView>
+            <i>Hello , @(context.User.Identity!.Name)</i>
+            <i @onclick="LogoutAsync">Log Out</i>
+        </AuthorizeView>
+    </div>
+</header>
+<div class="login-form">
+    <EditForm Model="@viewModel" OnValidSubmit="HandleRegistration">
+        <FluentValidationValidator></FluentValidationValidator>
+        <h3>Register</h3>
+        <div class="form-group">
+            <label>Email</label>
+            <InputText class="box" @bind-Value="@viewModel.Email" placeholder="Enter your email" />
+            <ValidationMessage For="@(() => viewModel.Email)" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <InputText class="box" @bind-Value="@viewModel.Password" type="password" placeholder="Enter your password" />
+            <ValidationMessage For="@(() => viewModel.Password)" />
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <InputText class="box" @bind-Value="@viewModel.ConfirmPassword" type="password" placeholder="Enter your password" />
+            <ValidationMessage For="@(() => viewModel.ConfirmPassword)" />
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <InputTextArea class="box" @bind-Value="@viewModel.Address" placeholder="Enter your Address" />
+            <ValidationMessage For="@(() => viewModel.Address)" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Register Now</button>
+        </div>
+        @if(ShowErrors)
+        {
+            <div class="validation-message">@Error</div>
+        }
+    </EditForm>
+</div>

@@ -1,0 +1,33 @@
+﻿@page "/Profile/{userId?}"
+@layout MudMainLayout
+<MudCard>
+    @foreach (ReservationServiceDetailsVM reservationViewModel in reservationsViewModel)
+    {
+        <MudCard Class="mb-5">
+            <MudCardHeader>
+                <MudText Typo="Typo.h3">
+                    Reservation
+                </MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText Typo="Typo.h5">
+                    @reservationViewModel.serviceName
+                </MudText>
+                <MudText Typo="Typo.h4">
+                    Status : @reservationViewModel.Status.ToString()
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Class="me-3" OnClick="() =>NavigateToReservationEdit(reservationViewModel.Id)" Variant="Variant.Filled" Color="Color.Info">
+                    Edit
+                </MudButton>
+                <MudButton Class="me-3" OnClick="() =>DeleteReservation(reservationViewModel.Id)" Variant="Variant.Filled" Color="Color.Error">
+                    Delete
+                </MudButton>
+                <MudButton OnClick="() =>NavigateToReview(reservationViewModel.Id)"Variant="Variant.Filled" Color="Color.Warning">
+                    Rate It
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+     }
+</MudCard>
